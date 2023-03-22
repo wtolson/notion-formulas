@@ -1,0 +1,112 @@
+[project]
+name = "notion-formulas"
+description = 'Compose complex notion formulas in Python.'
+readme = "README.md"
+requires-python = ">=3.7"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Trevor Olson", email = "trevor@heytrevor.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "typing_extensions; python_version < '3.10'"
+]
+dynamic = ["version"]
+
+[project.urls]
+Documentation = "https://github.com/wtolson/notion-formulas#readme"
+Issues = "https://github.com/wtolson/notion-formulas/issues"
+Source = "https://github.com/wtolson/notion-formulas"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "notion_formulas.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest",
+  "pytest-cov",
+]
+
+[tool.hatch.envs.default.scripts]
+test = "pytest {args}"
+cov = "pytest --cov-report=term --cov-config=pyproject.toml --cov=notion_formulas --cov=tests {args}"
+cov-html = [
+  "pytest --cov-report=html --cov-config=pyproject.toml --cov=notion_formulas --cov=tests {args}",
+  "python -m webbrowser -t htmlcov/index.html",
+]
+
+[[tool.hatch.envs.test.matrix]]
+python = ["37", "38", "39", "310", "311"]
+
+[tool.hatch.envs.mypy]
+detached = true
+dependencies = [
+  "mypy",
+]
+
+[tool.hatch.envs.mypy.scripts]
+run = "mypy ."
+
+[tool.hatch.envs.style]
+detached = true
+dependencies = [
+  "black",
+  "ruff",
+]
+
+[tool.hatch.envs.style.scripts]
+check = [
+  "black --check --diff .",
+  "ruff check .",
+]
+fmt = [
+  "- ruff check --fix .",
+  "black .",
+  "check",
+]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+omit = []
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+  "except ImportError:",
+  "class .*\\bProtocol\\):",
+  "@(abc\\.)?abstractmethod",
+  "@(abc\\.)?abstractproperty",
+]
+
+[tool.mypy]
+strict = true
+
+[tool.ruff]
+select = [
+  "E",  # Pyflakes
+  "F",  # pycodestyle
+  "W",  # pycodestyle
+  "C90",  # McCabe
+  "I",  # isort
+  "N",  # pep8-naming
+  "B",  # Bugbear
+  "RUF",  # Ruff
+]
