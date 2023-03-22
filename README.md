@@ -58,7 +58,7 @@ For major changes, please open an issue first to discuss what you would like to 
 Notion Formulas is released under the [MIT][MIT] license, which allows for free and open use, modification, and distribution.
 
 
-[badge-build]: https://img.shields.io/github/actions/workflow/status/wtolson/notion-formulas/tests.yaml
+[badge-build]: https://img.shields.io/github/actions/workflow/status/wtolson/notion-formulas/test.yml
 [badge-license]: https://img.shields.io/badge/license-MIT-green
 [badge-python]: https://img.shields.io/pypi/pyversions/notion-formulas
 [badge-version]: https://img.shields.io/pypi/v/notion-formulas
