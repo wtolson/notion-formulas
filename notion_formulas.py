@@ -17,7 +17,7 @@ except ImportError:
 
 __author__ = "Trevor Olson"
 __email__ = "trevor@heytrevor.com"
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 Scalar = Union[bool, int, float, str]
 Expr = Union[Scalar, "BooleanExpr", "NumberExpr", "StringExpr", "DateExpr"]
