@@ -1,0 +1,25 @@
+# serializer version: 1
+# name: test_format_number
+  'replaceAll(prop("number"), "(?<!(\\\\.\\\\d*|^.{0}))(?=(\\\\d{3})+(?!\\\\d))", ",")'
+# ---
+# name: test_format_percent
+  'format(floor(100 * prop("number"))) + "%"'
+# ---
+# name: test_list_length
+  'if(empty(prop("string")), 0, length(replaceAll(prop("string"), "[^,]", "")) + 1)'
+# ---
+# name: test_lowercase
+  'replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(prop("string"), "A", "a"), "B", "b"), "C", "c"), "D", "d"), "E", "e"), "F", "f"), "G", "g"), "H", "h"), "I", "i"), "J", "j"), "K", "k"), "L", "l"), "M", "m"), "N", "n"), "O", "o"), "P", "p"), "Q", "q"), "R", "r"), "S", "s"), "T", "t"), "U", "u"), "V", "v"), "W", "w"), "X", "x"), "Y", "y"), "Z", "z")'
+# ---
+# name: test_progressbar
+  'slice("\\u25a0\\u25a0\\u25a0\\u25a0\\u25a0\\u25a0\\u25a0\\u25a0\\u25a0\\u25a0", 0, floor(10 * prop("number"))) + slice("\\u25a1\\u25a1\\u25a1\\u25a1\\u25a1\\u25a1\\u25a1\\u25a1\\u25a1\\u25a1", 0, 10 - floor(10 * prop("number")))'
+# ---
+# name: test_progressbar.1
+  'slice("\\u25a0\\u25a0\\u25a0", 0, floor(3 * prop("number"))) + slice("\\u25a1\\u25a1\\u25a1", 0, 3 - floor(3 * prop("number")))'
+# ---
+# name: test_progressbar.2
+  'slice("XXXXXXXXXX", 0, floor(10 * prop("number"))) + slice("xxxxxxxxxx", 0, 10 - floor(10 * prop("number")))'
+# ---
+# name: test_uppercase
+  'replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(replaceAll(prop("string"), "a", "A"), "b", "B"), "c", "C"), "d", "D"), "e", "E"), "f", "F"), "g", "G"), "h", "H"), "i", "I"), "j", "J"), "k", "K"), "l", "L"), "m", "M"), "n", "N"), "o", "O"), "p", "P"), "q", "Q"), "r", "R"), "s", "S"), "t", "T"), "u", "U"), "v", "V"), "w", "W"), "x", "X"), "y", "Y"), "z", "Z")'
+# ---

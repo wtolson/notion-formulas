@@ -1,4 +1,18 @@
-from notion_formulas import Number, String, encode, list_length, prop, select
+from syrupy.assertion import SnapshotAssertion
+
+from notion_formulas import (
+    Number,
+    String,
+    encode,
+    format_number,
+    format_percent,
+    list_length,
+    lowercase,
+    progressbar,
+    prop,
+    select,
+    uppercase,
+)
 
 NUMBER: Number = prop("number")
 STRING: String = prop("string")
@@ -36,8 +50,27 @@ def test_select() -> None:
     )
 
 
-def test_list_length() -> None:
-    assert encode(list_length(STRING)) == (
-        'if(empty(prop("string")), 0, '
-        'length(replaceAll(prop("string"), "[^,]", "")) + 1)'
-    )
+def test_list_length(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == encode(list_length(STRING))
+
+
+def test_lowercase(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == encode(lowercase(STRING))
+
+
+def test_uppercase(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == encode(uppercase(STRING))
+
+
+def test_format_number(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == encode(format_number(NUMBER))
+
+
+def test_format_percent(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == encode(format_percent(NUMBER))
+
+
+def test_progressbar(snapshot: SnapshotAssertion) -> None:
+    assert snapshot == encode(progressbar(NUMBER))
+    assert snapshot == encode(progressbar(NUMBER, size=3))
+    assert snapshot == encode(progressbar(NUMBER, full="X", empty="x"))

@@ -766,6 +766,39 @@ def list_length(value: String) -> Number:
     return if_(empty(value), 0, length(replace_all(value, "[^,]", "")) + 1)
 
 
+def lowercase(value: String) -> String:
+    """Returns a string with all uppercase letters converted to lowercase."""
+    for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+        value = replace_all(value, letter, letter.lower())
+    return value
+
+
+def uppercase(value: String) -> String:
+    """Returns a string with all lowercase letters converted to uppercase."""
+    for letter in "abcdefghijklmnopqrstuvwxyz":
+        value = replace_all(value, letter, letter.upper())
+    return value
+
+
+def format_number(value: Number) -> String:
+    """Returns a string with commas inserted between every three digits."""
+    return replace_all(value, r"(?<!(\.\d*|^.{0}))(?=(\d{3})+(?!\d))", ",")
+
+
+def format_percent(value: Number) -> String:
+    """Returns a number 0-1 formatted as a percentage."""
+    return format(floor(100 * value)) + "%"
+
+
+def progressbar(
+    percent: Number, full: str = "■", empty: str = "□", size: int = 10
+) -> String:
+    """Returns a progress bar representing the percentage."""
+    num_full = floor(size * percent)
+    num_empty = size - num_full
+    return slice(size * full, 0, num_full) + slice(size * empty, 0, num_empty)
+
+
 #
 # Serialization
 #
