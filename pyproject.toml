@@ -38,11 +38,14 @@ path = "notion_formulas.py"
 
 [tool.hatch.envs.default]
 dependencies = [
-  "pytest",
+  "mypy",
   "pytest-cov",
+  "pytest",
+  "syrupy",
 ]
 
 [tool.hatch.envs.default.scripts]
+typecheck = "mypy ."
 test = "pytest {args}"
 cov = "pytest --cov-report=term --cov-config=pyproject.toml --cov=notion_formulas --cov=tests {args}"
 cov-html = [
@@ -52,15 +55,6 @@ cov-html = [
 
 [[tool.hatch.envs.test.matrix]]
 python = ["37", "38", "39", "310", "311"]
-
-[tool.hatch.envs.mypy]
-detached = true
-dependencies = [
-  "mypy",
-]
-
-[tool.hatch.envs.mypy.scripts]
-run = "mypy ."
 
 [tool.hatch.envs.style]
 detached = true
