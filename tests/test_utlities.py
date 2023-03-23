@@ -4,7 +4,7 @@ NUMBER: Number = prop("number")
 STRING: String = prop("string")
 
 
-def test_sum() -> Number:
+def test_sum() -> None:
     assert encode(sum([NUMBER])) == 'prop("number")'
     assert encode(sum([NUMBER, NUMBER])) == 'prop("number") + prop("number")'
     assert (

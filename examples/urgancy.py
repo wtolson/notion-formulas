@@ -8,7 +8,7 @@ For the lazy, the output of this formula can be found in urgency.txt.
 [1]: https://taskwarrior.org/docs/urgency/
 """
 
-from typing import Callable
+from typing import Callable, List, Tuple
 
 from notion_formulas import (
     Boolean,
@@ -137,7 +137,7 @@ def urgency_blocked() -> Number:
     return if_((STATUS == "Blocked") | has_uncompleted_dependencies(), 1, 0)
 
 
-WEIGHTS: list[tuple[float, Callable[[], Number]]] = [
+WEIGHTS: List[Tuple[float, Callable[[], Number]]] = [
     (15.0, urgency_next),  # "next" tag
     (12.0, urgency_overdue),  # overdue or near due date
     (8.0, urgency_blocking),  # blocking other tasks

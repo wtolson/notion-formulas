@@ -253,9 +253,6 @@ class StringExpr(Protocol):
     def encode(self) -> str:
         ...
 
-    def __len__(self) -> Number:
-        return length(self)
-
     def __add__(self, other: String) -> String:
         return add(self, other)
 

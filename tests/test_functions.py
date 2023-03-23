@@ -212,22 +212,22 @@ def test_from_timestamp() -> None:
 
 def test_date_add() -> None:
     assert (
-        encode(date_add(DATE, NUMBER, "day"))
-        == 'dateAdd(prop("date"), prop("number"), "day")'
+        encode(date_add(DATE, NUMBER, "days"))
+        == 'dateAdd(prop("date"), prop("number"), "days")'
     )
 
 
 def test_date_subtract() -> None:
     assert (
-        encode(date_subtract(DATE, NUMBER, "day"))
-        == 'dateSubtract(prop("date"), prop("number"), "day")'
+        encode(date_subtract(DATE, NUMBER, "days"))
+        == 'dateSubtract(prop("date"), prop("number"), "days")'
     )
 
 
 def test_date_between() -> None:
     assert (
-        encode(date_between(DATE, DATE, "day"))
-        == 'dateBetween(prop("date"), prop("date"), "day")'
+        encode(date_between(DATE, DATE, "days"))
+        == 'dateBetween(prop("date"), prop("date"), "days")'
     )
 
 
