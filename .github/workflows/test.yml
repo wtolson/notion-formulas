@@ -42,5 +42,8 @@ jobs:
     - name: Style checks
       run: hatch run style:check
 
+    - name: Type checks
+      run: hatch run typecheck
+
     - name: Run tests
       run: hatch run cov
