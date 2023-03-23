@@ -18,7 +18,7 @@ else:
 
 __author__ = "Trevor Olson"
 __email__ = "trevor@heytrevor.com"
-__version__ = "1.0.1"
+__version__ = "1.1.0"
 
 Scalar = Union[bool, int, float, str]
 Expr = Union[Scalar, "BooleanExpr", "NumberExpr", "StringExpr", "DateExpr"]
