@@ -2,17 +2,18 @@ from __future__ import annotations
 
 import abc
 import json
+import sys
 from typing import Any, TypeVar, Union, cast
 
-try:  # python < 3.8
-    from typing import Literal, Protocol
-except ImportError:
+if sys.version_info < (3, 8):
     from typing_extensions import Literal, Protocol
+else:
+    from typing import Literal, Protocol
 
-try:  # python < 3.10
-    from typing import TypeAlias
-except ImportError:
+if sys.version_info < (3, 10):
     from typing_extensions import TypeAlias
+else:
+    from typing import TypeAlias
 
 
 __author__ = "Trevor Olson"
